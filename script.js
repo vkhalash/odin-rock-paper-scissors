@@ -79,4 +79,10 @@ function playGame(roundCount = 5) {
   alert(gameMessage);
 }
 
-playGame();
+function startGame() {
+  do {
+    playGame();
+  } while (confirm("Do you want to restart the game?"));
+}
+
+startGame();
