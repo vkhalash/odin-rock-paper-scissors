@@ -17,6 +17,9 @@ const rules = {
   scissors: "paper",
 };
 
+const containerRoundResult = document.querySelector("#round-result");
+const containerRunningScore = document.querySelector("#running-score");
+
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
@@ -24,6 +27,9 @@ buttons.forEach((button) => {
     playRound(button.dataset.choice);
   });
 });
+
+let computerScore = 0;
+let userScore = 0;
 
 function playRound(userChoice) {
   let computerChoice = getComputerChoice();
@@ -33,11 +39,12 @@ function playRound(userChoice) {
     roundResult = "Tie";
   } else if (rules[userChoice] === computerChoice) {
     roundResult = "You won the round";
+    userScore++;
   } else {
     roundResult = "Computer won the round";
+    computerScore++;
   }
 
-  const roundMessage = `Round result: ${roundResult}. You chose ${userChoice}, computer chose ${computerChoice}.`;
-  console.log(roundMessage);
-  alert(roundMessage);
+  containerRoundResult.textContent = `Round result: ${roundResult}. You chose ${userChoice}, computer chose ${computerChoice}.`;
+  containerRunningScore.textContent = `Score: ${userScore}-${computerScore}.`;
 }
