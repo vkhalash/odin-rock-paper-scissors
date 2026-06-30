@@ -2,7 +2,7 @@
 
 Sample solution for the [Rock Paper Scissors](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors) project from [The Odin Project](https://www.theodinproject.com)
 
-This is a simple Rock Paper Scissors game implemented in JavaScript, playable in the browser through alert and prompt dialogs.
+This is a simple Rock Paper Scissors game implemented in JavaScript, playable in the browser through an interactive UI.
 
 Live Demo: [Visit the website](https://vkhalash.github.io/odin-rock-paper-scissors)
 
