@@ -33,7 +33,7 @@ let computerScore = 0;
 let userScore = 0;
 let round = 0;
 
-function playRound(userChoice, roundCount = 5) {
+function playRound(userChoice, scoreToWin = 5) {
   if (round === 0) {
     containerGameResult.replaceChildren();
   }
@@ -56,12 +56,10 @@ function playRound(userChoice, roundCount = 5) {
   containerRoundResult.textContent = `Round ${round}: ${roundResult}. You chose ${userChoice}, computer chose ${computerChoice}.`;
   containerRunningScore.textContent = `Score: ${userScore}-${computerScore}.`;
 
-  if (round === roundCount) {
+  if (userScore === scoreToWin || computerScore === scoreToWin) {
     let gameResult;
 
-    if (computerScore === userScore) {
-      gameResult = "Tie";
-    } else if (userScore > computerScore) {
+    if (userScore > computerScore) {
       gameResult = "You won the game";
     } else {
       gameResult = "Computer won the game";
