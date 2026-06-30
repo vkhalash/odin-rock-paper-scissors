@@ -19,6 +19,7 @@ const rules = {
 
 const containerRoundResult = document.querySelector("#round-result");
 const containerRunningScore = document.querySelector("#running-score");
+const containerGameResult = document.querySelector("#game-result");
 
 const buttons = document.querySelectorAll("button");
 
@@ -30,8 +31,13 @@ buttons.forEach((button) => {
 
 let computerScore = 0;
 let userScore = 0;
+let round = 0;
 
-function playRound(userChoice) {
+function playRound(userChoice, roundCount = 5) {
+  if (round === 0) {
+    containerGameResult.replaceChildren();
+  }
+
   let computerChoice = getComputerChoice();
   let roundResult;
 
@@ -45,6 +51,26 @@ function playRound(userChoice) {
     computerScore++;
   }
 
-  containerRoundResult.textContent = `Round result: ${roundResult}. You chose ${userChoice}, computer chose ${computerChoice}.`;
+  round++;
+
+  containerRoundResult.textContent = `Round ${round}: ${roundResult}. You chose ${userChoice}, computer chose ${computerChoice}.`;
   containerRunningScore.textContent = `Score: ${userScore}-${computerScore}.`;
+
+  if (round === roundCount) {
+    let gameResult;
+
+    if (computerScore === userScore) {
+      gameResult = "Tie";
+    } else if (userScore > computerScore) {
+      gameResult = "You won the game";
+    } else {
+      gameResult = "Computer won the game";
+    }
+
+    containerGameResult.textContent = `${gameResult}. Score: ${userScore}-${computerScore}.`;
+
+    computerScore = 0;
+    userScore = 0;
+    round = 0;
+  }
 }
